@@ -36,6 +36,7 @@ running = 1
 
 #Important classes
 
+# -> Need to modify the Scenery class
 class Scenery(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -47,6 +48,7 @@ class Scenery(pygame.sprite.Sprite):
     def renderingS(self):
         winDisplay.blit(self.sceneryImage, (self.scX,self.scY))
 
+# -> Need to modify the Floor class
 class Floor(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
