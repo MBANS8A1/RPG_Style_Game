@@ -60,3 +60,28 @@ class Enemy(pygame.sprite.Sprite):
 
 #Game loop
 while running :
+    pygame.time.delay (110)
+
+    for event in pygame.event.get();
+       if event.type == pygame.QUIT:
+          running = 0
+
+    k_buttons = pygame.key.get_pressed()
+
+    if k_buttons[pygame.K_LEFT]:
+        pass
+    
+    if k_buttons[pygame.K_RIGHT]:
+        pass
+    
+    if k_buttons[pygame.K_UP]:
+        pass
+
+    if k_buttons[pygame.K_DOWN]:
+        pass
+    
+    #Whole screen needs to be updated in frame transition
+    pygame.display.update()
+
+pygame.quit()
+
