@@ -40,8 +40,9 @@ running = 1
 class Scenery(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.sceneryImage = pygame.image.load ("Background.png")
-        self.rect = self.sceneryImage.get_rect(center=(355,480))
+        NEW_SCENERY_SIZE = (710, 480)
+        self.sceneryImage = pygame.transform.scale(pygame.image.load ("Background.png"),NEW_SCENERY_SIZE)
+        self.rect = self.sceneryImage.get_rect(center=(355,240))
         self.scX = 0
         self.scY = 0
         
