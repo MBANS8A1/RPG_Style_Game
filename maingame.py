@@ -20,7 +20,7 @@ ACCEL_ = 0.35
 FRIC_ = -0.12
 #Cap the game at 60 frames per second for smooth transitions
 FPS =60
-FPS_CL = pygame.time.Clock
+FPS_CL = pygame.time.Clock()
 
 #Character (Player) position will 
 #be tracked by vector in X and Y direction
@@ -103,6 +103,7 @@ while running :
     
     #Whole screen needs to be updated in frame transition
     pygame.display.update()
+    FPS_CL.tick_busy_loop(FPS) 
 
 pygame.quit()
 
