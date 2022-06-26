@@ -40,7 +40,7 @@ class Scenery(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.sceneryImage = pygame.image.load ("Background.png")
-        self.rect = self.image.get_rect(center=(355,480))
+        self.rect = self.sceneryImage.get_rect(center=(355,480))
         self.scX = 0
         self.scY = 0
         
@@ -51,7 +51,7 @@ class Floor(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.floorImage = pygame.image.load ("Ground.png")
-        self.rect = self.image.get_rect(center=(355,480))
+        self.rect = self.floorImage.get_rect(center=(355,480))
         self.floorX = 0
         self.floorY = 0
         
