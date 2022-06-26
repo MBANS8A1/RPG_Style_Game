@@ -38,19 +38,19 @@ running = 1
 
 class Scenery(pygame.sprite.Sprite):
     def __init__(self):
-        super().__init__():
+        super().__init__()
 
 class Floor(pygame.sprite.Sprite):
     def __init__(self):
-        super().__init__():
+        super().__init__()
 
 class Hero(pygame.sprite.Sprite):
     def __init__(self):
-        super().__init__():
+        super().__init__()
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
-        super().__init__():
+        super().__init__()
 
 
 
