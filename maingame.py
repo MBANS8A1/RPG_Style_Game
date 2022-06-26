@@ -32,3 +32,31 @@ pygame.display.set_caption("RPG_Slasher")
 
 #For the game loop (acts as a true boolean value)
 running = 1
+
+
+#Important classes
+
+class Scenery(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__():
+
+class Floor(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__():
+
+class Hero(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__():
+
+class Enemy(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__():
+
+
+
+
+
+
+
+#Game loop
+while running :
