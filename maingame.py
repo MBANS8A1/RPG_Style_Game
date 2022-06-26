@@ -36,7 +36,7 @@ running = 1
 
 #Important classes
 
-# -> Need to modify the Scenery class
+
 class Scenery(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -49,14 +49,14 @@ class Scenery(pygame.sprite.Sprite):
     def renderingS(self):
         winDisplay.blit(self.sceneryImage, (self.scX,self.scY))
 
-# -> Need to modify the Floor class
+
 class Floor(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.floorImage = pygame.image.load ("Ground.png")
-        self.rect = self.floorImage.get_rect(center=(355,480))
+        self.rect = self.floorImage.get_rect(center=(355,440))
         self.floorX = 0
-        self.floorY = 0
+        self.floorY = 420
         
     
      def renderingF(self):
