@@ -65,6 +65,13 @@ class Floor(pygame.sprite.Sprite):
 class Hero(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
+        self.imageH = pygame.image.load("Player_Sprite_R.png")
+        self.rectH = self.imageH.get_rect()
+        self.vecX =0
+        self.position_H = vector_((50,460))
+        self.velocity_H = vector_((0,0))
+        self.accel_H = vector_((0,0))
+        self.direc_H = "RIGHT"
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
@@ -75,6 +82,7 @@ class Enemy(pygame.sprite.Sprite):
 #creating objects of classes
 scenery = Scenery()
 floor = Floor()
+hero = Hero()
 
 
 
@@ -103,6 +111,7 @@ while running :
     
     scenery.renderingS()
     floor.renderingF()
+    winDisplay.blit(hero.imageH, hero.rectH)
     
     #Whole screen needs to be updated in frame transition
     pygame.display.update()
