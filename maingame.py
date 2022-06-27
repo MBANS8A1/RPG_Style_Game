@@ -73,6 +73,20 @@ class Hero(pygame.sprite.Sprite):
         self.accel_H = vector_((0,0))
         self.direc_H = "RIGHT"
 
+    def move_H(self):
+        pass
+
+    def update_H(self):
+        pass
+
+    def attack_H(self):
+        pass
+
+    def jump_H(self):
+        pass
+    
+        
+        
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
