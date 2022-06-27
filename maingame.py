@@ -24,7 +24,7 @@ FPS_CL = pygame.time.Clock()
 
 #Character (Player) position will 
 #be tracked by vector in X and Y direction
-vec_PL =pygame.math.Vector2
+vector_ =pygame.math.Vector2
 
 #Set pygame window
 winDisplay = pygame.display.set_mode ((WIDTH,HEIGHT))
