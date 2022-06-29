@@ -74,6 +74,7 @@ class Hero(pygame.sprite.Sprite):
         self.direc_H = "RIGHT"
         self.run = True
         self.isJumping = False
+        self.jumpCount = 10
 
     def move_H(self):
         self.accel_H = vector_(0,0.5)
@@ -113,7 +114,27 @@ class Hero(pygame.sprite.Sprite):
         pass
 
     def jump_H(self):
-        pass
+        self.rect.x += 1
+ 
+        # Check to see if player (sprite) is in contact with the ground
+        hits = pygame.sprite.spritecollide(self, floor_group, False)
+     
+        self.rect.x -= 1
+        if self.isJumping == False:
+               self.isJumping = True
+               self.velocity_H.y = -10
+               
+               
+        else:
+           if self.jumpCount >= -10:
+              negVal = 1
+              if self.jumpCount < 0:
+                 negVal = -1
+              self.position_H.y -= (self.jumpCount ** 2) *0.5*negVal
+              self.jumpCount -= 1
+           else:
+              self.isJumping = False
+              self.jumpCount = 10
     
         
         
