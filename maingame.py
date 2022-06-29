@@ -73,6 +73,7 @@ class Hero(pygame.sprite.Sprite):
         self.accel_H = vector_((0,0))
         self.direc_H = "RIGHT"
         self.run = True
+        self.isJumping = False
 
     def move_H(self):
         self.accel_H = vector_(0,0.5)
@@ -125,6 +126,8 @@ class Enemy(pygame.sprite.Sprite):
 #creating objects of classes
 scenery = Scenery()
 floor = Floor()
+floor_group = pygame.sprite.Group()
+floor_group.add(floor)
 hero = Hero()
 
 
@@ -132,7 +135,14 @@ hero = Hero()
 #Game loop
 while running :
     pygame.time.delay (110)
-
+    hits = pygame.sprite.spritecollide(hero,floor_group,False)
+    if hero.velocity_H.y > 0:
+         if hits:
+            lowest_point = hits[0]
+            if hero.position_H.y < lowest_point.rect.bottom:
+               hero.position_H.y = lowest_point.rect.top + 1
+               hero.velocity_H.y = 0
+               hero.isJumping = False
     for event in pygame.event.get():
        if event.type == pygame.QUIT:
           running = 0
