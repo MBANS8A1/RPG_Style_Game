@@ -89,6 +89,15 @@ class Hero(pygame.sprite.Sprite):
     
       if k_buttons[pygame.K_RIGHT] and self.position_H.x <WIDTH - self.getHeroWidth()-self.velocity_H.x:
             self.accel_H.x = ACCEL_
+      
+      #Acceleration's hortizonal component reduced by negative frictional quantity
+      self.accel_H.x += self.velocity_H.x * FRIC_
+       #Now the velocity vector is updated by the acceleration vector to reflect changes
+      self.velocity_H += self.accel_H
+       #Position vector updated with velocity vector and half the acceleration vector
+      self.position_H += self.velocity_H + (0.5*self.accel_H)
+
+      self.rect.topleft = self.position_H
 
     def update_H(self):
         pass
