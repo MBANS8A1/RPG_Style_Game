@@ -68,9 +68,9 @@ class Hero(pygame.sprite.Sprite):
         self.imageH = pygame.image.load("Player_Sprite_R.png")
         self.rectH = self.imageH.get_rect()
         self.vecX =0
-        self.position_H = vector_((50,460))
-        self.velocity_H = vector_((0,0))
-        self.accel_H = vector_((0,0))
+        self.position_H = vector_(50,390)
+        self.velocity_H = vector_(0,0)
+        self.accel_H = vector_(0,0)
         self.direc_H = "RIGHT"
         self.run = True
         self.isJumping = False
@@ -151,7 +151,9 @@ floor_group = pygame.sprite.Group()
 floor_group.add(floor)
 hero = Hero()
 
-
+def drawGameWindow():
+    #Whole screen needs to be updated in frame transition
+    pygame.display.update()
 
 #Game loop
 while running :
@@ -167,28 +169,20 @@ while running :
     for event in pygame.event.get():
        if event.type == pygame.QUIT:
           running = 0
-
-    k_buttons = pygame.key.get_pressed()
-
-    if k_buttons[pygame.K_LEFT]:
-        pass
+        
+        if event.type == pygame.KEYDOWN:
+           if event.key == pygame.K_SPACE:
+               if not hero.isJumping:
+                   hero.jump_H()
     
-    if k_buttons[pygame.K_RIGHT]:
-        pass
-    
-    if k_buttons[pygame.K_UP]:
-        pass
-
-    if k_buttons[pygame.K_DOWN]:
-        pass
-    
-    
+    hero.move_H()
     scenery.renderingS()
     floor.renderingF()
     winDisplay.blit(hero.imageH, hero.rectH)
     
     #Whole screen needs to be updated in frame transition
     pygame.display.update()
+    drawGameWindow()
     FPS_CL.tick_busy_loop(FPS) 
 
 pygame.quit()
