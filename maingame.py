@@ -98,6 +98,12 @@ class Hero(pygame.sprite.Sprite):
       self.position_H += self.velocity_H + (0.5*self.accel_H)
 
       self.rect.topleft = self.position_H
+       
+      def getHeroWidth (self):
+        return self.imageH.get_width()
+    
+      def getHeroHeight (self):
+        return self.imageH.get_height()
 
     def update_H(self):
         pass
