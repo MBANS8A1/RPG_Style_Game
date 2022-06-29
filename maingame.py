@@ -72,9 +72,23 @@ class Hero(pygame.sprite.Sprite):
         self.velocity_H = vector_((0,0))
         self.accel_H = vector_((0,0))
         self.direc_H = "RIGHT"
+        self.run = True
 
     def move_H(self):
-        pass
+        self.accel_H = vector_(0,0.5)
+      
+      if abs(self.velocity_H.x) > 0.3:
+            self.run = True
+      else:
+            self.run = False
+
+      k_buttons = pygame.key.get_pressed()
+
+      if k_buttons[pygame.K_LEFT] and self.position_H.x > self.velocity_H.x:
+            self.accel_H.x = -ACCEL_
+    
+      if k_buttons[pygame.K_RIGHT] and self.position_H.x <WIDTH - self.getHeroWidth()-self.velocity_H.x:
+            self.accel_H.x = ACCEL_
 
     def update_H(self):
         pass
