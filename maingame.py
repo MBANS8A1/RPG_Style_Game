@@ -19,7 +19,7 @@ ACCEL_ = 0.35
 #Friction (can change depending on game ground surface)
 FRIC_ = -0.12
 #Cap the game at 60 frames per second for smooth transitions
-FPS =60
+FPS =28
 FPS_CL = pygame.time.Clock()
 
 #Character (Player) position will 
