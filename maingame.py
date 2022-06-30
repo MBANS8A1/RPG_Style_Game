@@ -205,9 +205,9 @@ class Hero(pygame.sprite.Sprite):
      
     def turn_Correction (self):
         if self.a_Frame == 1:
-            self.position_H.x -= 20
+            self.position_H.x -= 10
         if self.a_Frame== 10:
-            self.position_H.x += 20 
+            self.position_H.x += 10
         
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
@@ -247,6 +247,10 @@ while running :
                    hero.right = False
                    hero.left = False
                    hero.jump_H()
+           if event.key == pygame.K_a:
+                if hero.attacking == False:
+                   hero.attack_H()
+                   hero.attacking = True  
     
     hero.move_H()
     scenery.renderingS()
@@ -256,6 +260,8 @@ while running :
     #Whole screen needs to be updated in frame transition
     pygame.display.update()
     drawGameWindow()
+    if hero.attacking == True:
+       hero.attack_H() 
     FPS_CL.tick_busy_loop(FPS) 
 
 pygame.quit()
