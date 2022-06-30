@@ -33,13 +33,30 @@ pygame.display.set_caption("RPG_Slasher")
 #For the game loop (acts as a true boolean value)
 running = 1
 
-run_anim_R = [pygame.image.load("Player_Sprite_R.png"), pygame.image.load("Player_Sprite2_R.png"), pygame.image.load("Player_Sprite3_R.png"),
-pygame.image.load("Player_Sprite4_R.png"), pygame.image.load("Player_Sprite5_R.png"), pygame.image.load("Player_Sprite6_R.png"),
-pygame.image.load("Player_Sprite_R.png")]
+#Running animations
+run_anim_R = [pygame.image.load("Hero_Sprite_R.png"), pygame.image.load("Hero_Sprite2_R.png"), pygame.image.load("Hero_Sprite3_R.png"),
+pygame.image.load("Hero_Sprite4_R.png"), pygame.image.load("Hero_Sprite5_R.png"), pygame.image.load("Hero_Sprite6_R.png"),
+pygame.image.load("Hero_Sprite_R.png")]
 
-run_anim_L = [pygame.image.load("Player_Sprite_L.png"), pygame.image.load("Player_Sprite2_L.png"), pygame.image.load("Player_Sprite3_L.png"),
-pygame.image.load("Player_Sprite4_L.png"), pygame.image.load("Player_Sprite5_L.png"), pygame.image.load("Player_Sprite6_L.png"),
-pygame.image.load("Player_Sprite_L.png")]
+run_anim_L = [pygame.image.load("Hero_Sprite_L.png"), pygame.image.load("Hero_Sprite2_L.png"), pygame.image.load("Hero_Sprite3_L.png"),
+pygame.image.load("Hero_Sprite4_L.png"), pygame.image.load("Hero_Sprite5_L.png"), pygame.image.load("Hero_Sprite6_L.png"),
+pygame.image.load("Hero_Sprite_L.png")]
+
+#Attack (Sword Swipe)animations 
+attack_anim_R = [pygame.image.load("Hero_Sprite_R.png"),pygame.image.load("Hero_Attack_R.png"), 
+pygame.image.load("Hero_Attack2_R.png"), pygame.image.load("Hero_Attack2_R.png"), 
+pygame.image.load("Hero_Attack3_R.png"), pygame.image.load("Hero_Attack3_R.png"), 
+pygame.image.load("Hero_Attack4_R.png"), pygame.image.load("Hero_Attack4_R.png"), 
+pygame.image.load("Hero_Attack5_R.png"), pygame.image.load("Hero_Attack5_R.png"), 
+pygame.image.load("Hero_Attack_R.png")]
+
+
+attack_anim_L = [pygame.image.load("Hero_Sprite_L.png"), pygame.image.load("Hero_Attack_L.png"), 
+pygame.image.load("Hero_Attack2_L.png"), pygame.image.load("Hero_Attack2_L.png"),
+pygame.image.load("Hero_Attack3_L.png"), pygame.image.load("Hero_Attack3_L.png"),
+pygame.image.load("Hero_Attack4_L.png"), pygame.image.load("Hero_Attack4_L.png"),
+pygame.image.load("Hero_Attack5_L.png"),pygame.image.load("Hero_Attack5_L.png"),
+pygame.image.load("Hero_Attack_L.png")]
 
 
 #Important classes
@@ -73,7 +90,7 @@ class Floor(pygame.sprite.Sprite):
 class Hero(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.imageH = pygame.image.load("Player_Sprite_R.png")
+        self.imageH = pygame.image.load("Hero_Sprite_R.png")
         self.rectH = self.imageH.get_rect()
         self.vecX =0
         self.position_H = vector_(50,390)
