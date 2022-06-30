@@ -204,7 +204,10 @@ class Hero(pygame.sprite.Sprite):
         self.a_Frame += 1
      
     def turn_Correction (self):
-        
+        if self.a_Frame == 1:
+            self.position_H.x -= 20
+        if self.a_Frame== 10:
+            self.position_H.x += 20 
         
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
