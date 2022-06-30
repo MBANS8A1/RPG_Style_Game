@@ -33,6 +33,14 @@ pygame.display.set_caption("RPG_Slasher")
 #For the game loop (acts as a true boolean value)
 running = 1
 
+run_anim_R = [pygame.image.load("Player_Sprite_R.png"), pygame.image.load("Player_Sprite2_R.png"), pygame.image.load("Player_Sprite3_R.png"),
+pygame.image.load("Player_Sprite4_R.png"), pygame.image.load("Player_Sprite5_R.png"), pygame.image.load("Player_Sprite6_R.png"),
+pygame.image.load("Player_Sprite_R.png")]
+
+run_anim_L = [pygame.image.load("Player_Sprite_L.png"), pygame.image.load("Player_Sprite2_L.png"), pygame.image.load("Player_Sprite3_L.png"),
+pygame.image.load("Player_Sprite4_L.png"), pygame.image.load("Player_Sprite5_L.png"), pygame.image.load("Player_Sprite6_L.png"),
+pygame.image.load("Player_Sprite_L.png")]
+
 
 #Important classes
 
@@ -71,7 +79,8 @@ class Hero(pygame.sprite.Sprite):
         self.position_H = vector_(50,390)
         self.velocity_H = vector_(0,0)
         self.accel_H = vector_(0,0)
-        self.direc_H = "RIGHT"
+        self.left = False
+        self.right = False
         self.run = True
         self.isJumping = False
         self.jumpCount = 10
@@ -87,9 +96,13 @@ class Hero(pygame.sprite.Sprite):
       k_buttons = pygame.key.get_pressed()
 
       if k_buttons[pygame.K_LEFT] and self.position_H.x > self.velocity_H.x:
+            self.left = True
+            self.right = False
             self.accel_H.x = -ACCEL_
     
       if k_buttons[pygame.K_RIGHT] and self.position_H.x <WIDTH - self.getHeroWidth()-self.velocity_H.x:
+            self.right = True
+            self.left  = False
             self.accel_H.x = ACCEL_
       
       #Acceleration's hortizonal component reduced by negative frictional quantity
@@ -135,7 +148,28 @@ class Hero(pygame.sprite.Sprite):
            else:
               self.isJumping = False
               self.jumpCount = 10
+      
     
+    def updateF_H (self):
+       if self.mv_frame > 6:
+          self.mv_frame = 0
+       if self.isJumping == False and self.run == True:
+          if self.velocity_H.x >0:
+              self.imageH = run_anim_R[self.mv_frame]
+              self.right = True
+              self.left = False
+          else:
+              self.imageH = run_anim_L[self.mv_frame]
+              self.right = False
+              self.left = True
+          self.mv_frame += 1
+       
+       if abs(self.velocity_H.x) < 0.2 and self.mv_frame != 0:
+          self.mv_frame = 0
+          if self.right == True:
+             self.imageH = run_anim_R[self.mv_frame]
+          if self.left == True:
+             self.imageH = run_anim_L[self.mv_frame]
         
         
 class Enemy(pygame.sprite.Sprite):
@@ -173,6 +207,8 @@ while running :
         if event.type == pygame.KEYDOWN:
            if event.key == pygame.K_SPACE:
                if not hero.isJumping:
+                   hero.right = False
+                   hero.left = False
                    hero.jump_H()
     
     hero.move_H()
