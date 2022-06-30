@@ -187,6 +187,23 @@ class Hero(pygame.sprite.Sprite):
              self.imageH = run_anim_R[self.mv_frame]
           if self.left == True:
              self.imageH = run_anim_L[self.mv_frame]
+     
+    
+    def attack_H (self):
+        if self.a_Frame > 10:
+            self.a_Frame = 0
+            self.attacking = False
+        
+        # Check direction for correct animation to display  
+        if self.right == True:
+             self.imageH = attack_anim_R[self.a_Frame]
+        elif self.left == True:
+             self.turn_Correction()
+             self.imageH = attack_anim_L[self.a_Frame] 
+        
+        self.a_Frame += 1
+     
+    def turn_Correction (self):
         
         
 class Enemy(pygame.sprite.Sprite):
